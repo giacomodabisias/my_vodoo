@@ -18,6 +18,8 @@ std::cout << "number three is " << my_variant.FindTpByIndex<2>() << std::endl;
 std::cout << "number four is " << my_variant.FindTpByIndex<3>() << std::endl;
 
 
+//my_variant = static_cast<char>('a');
+
 int d;
 std::cin >> d;
 if(d)

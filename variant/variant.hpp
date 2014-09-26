@@ -117,14 +117,19 @@ public:
     template<typename T>
     void
     operator=(T t){
-        current_type_index = FindIdxByType<T>();
-        data = (char*)(new T(t));
+        if( IsPresent<T, Args...>::value){
+            current_type_index = FindIdxByType<T>();
+            data = (char*)(new T(t));
+        }
+        else
+            throw std::exception();
     }
-    
+
     template<typename T>
     T GetDataByType() {
         if( FindIndexByType<T, 0, Args...>::value == current_type_index)
             return (T)*data;
+        std::cout << "\trequested type does not match current type" << std::endl;
         throw std::exception();
     }
 
